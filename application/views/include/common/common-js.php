@@ -1,0 +1,1 @@
+<script src="<?php echo __PUBLIC__ ?>js/scripts.js"></script>
