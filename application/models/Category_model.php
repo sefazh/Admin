@@ -56,7 +56,7 @@ class Category_model extends MY_Model
             'pid' => $id
         );
 
-        $query = $this->db->get_where($this->table, $where);
+        $query = $this->db->order_by('sort ASC, cat_name ASC')->get_where($this->table, $where);
 
         return $query->result_array();
     }
@@ -103,10 +103,59 @@ class Category_model extends MY_Model
         return $count == 0;
     }
 
+    /**
+     * 判断id是否是pid的父级（pid是否存在于id的子级中）
+     *
+     * @param $id
+     * @param $pid
+     * @return bool
+     */
+    private function _isParent($id, $pid)
+    {
+        $children = $this->getTree($id);
+
+        foreach ($children as $child)
+        {
+            if ($child['id'] == $pid)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * 新建一条分类
+     *
+     * @param $data
+     * @return bool
+     */
     public function create_row($data)
     {
         $result = $this->db->insert($this->table, $data);
 
         return $result ? $this->db->insert_id() : false;
+    }
+
+    /**
+     * 编辑一个分类
+     *
+     * @param $data
+     * @return bool
+     */
+    public function update_row($data)
+    {
+        if ( ! isset($data['id']) || ! isset($data['pid']))
+        {
+            return false;
+        }
+
+        if ($this->_isParent($data['id'], $data['pid']) || $data['id'] == $data['pid'])
+        {
+            return false; // pid不能子从于id
+        }
+
+        return $this->update_one($data);
     }
 }

@@ -30,15 +30,26 @@ class Category extends BackBase
     {
         $this->data['list'] = $this->category_model->getTree();
 
-//        dump($this->data['list']);die;
-
         $this->load->view('category/create', $this->data);
     }
 
-    public function detail()
+    public function update()
     {
-        $id = $this->input->get();
+        $id = (int)$this->input->get('id');
 
-        $this->load->view('goods/form', $this->data);
+        $this->data['list'] = $this->category_model->getTree();
+
+        $result = $this->category_model->get_one($id);
+
+        if (empty($result))
+        {
+            // 分类不存在 | id参数错误
+        }
+        else
+        {
+            $this->data['row'] = $result;
+        }
+
+        $this->load->view('category/update', $this->data);
     }
 }

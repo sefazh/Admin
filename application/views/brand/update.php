@@ -48,36 +48,21 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Advanced Form validations
+                            Brand / Upload
                         </header>
                         <div class="panel-body">
                             <div class="form">
-                                <form class="cmxform form-horizontal adminex-form" id="cateCreateForm" method="post">
+                                <form class="cmxform form-horizontal adminex-form" id="brandCreateForm" method="post">
                                     <div class="form-group ">
-                                        <label for="cat_name" class="control-label col-lg-3 col-sm-3">cat_name</label>
+                                        <label for="cat_name" class="control-label col-lg-3 col-sm-3">brand_name</label>
                                         <div class="col-lg-4 col-sm-4">
-                                            <input class=" form-control" id="cat_name" name="cat_name" type="text" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group ">
-                                        <label for="pid" class="control-label col-lg-3 col-sm-3">parent</label>
-                                        <div class="col-lg-4 col-sm-4">
-                                            <select name="pid" id="pid" class="form-control">
-                                                <option value="0">root</option>
-                                                <?php
-                                                    foreach ($list as $key => $val) {
-                                                        ?>
-                                                        <option value="<?=$val['id']?>"><?=str_repeat('－', $val['depth'])?><?=$val['cat_name']?></option>
-                                                        <?php
-                                                    }
-                                                ?>
-                                            </select>
+                                            <input class=" form-control" id="brand_name" name="brand_name" type="text" value="<?=$row['brand_name']?>" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-9">
+                                            <input type="hidden" name="id" value="<?=$row['id']?>">
                                             <button class="btn btn-primary" type="submit">Save</button>
                                             <button class="btn btn-default" type="button" onclick="window.history.back()">Cancel</button>
                                         </div>

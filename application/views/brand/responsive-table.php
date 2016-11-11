@@ -51,9 +51,9 @@
         <div class="col-sm-12">
         <section class="panel">
             <header class="panel-heading">
-                Category list
+                Brand list
                 <span class="tools pull-right">
-                    <a href="/category/create" class="fa fa-plus"></a>
+                    <a href="/brand/create" class="fa fa-plus"></a>
                     <a href="javascript:;" class="fa fa-chevron-down"></a>
                     <a href="javascript:;" class="fa fa-times"></a>
                  </span>
@@ -64,9 +64,9 @@
                         <thead class="cf">
                         <tr>
                             <th>id</th>
-                            <th>cat_name</th>
-                            <th class="numeric">pid</th>
-                            <th class="numeric">depth</th>
+                            <th>brand_name</th>
+                            <th class="numeric">goods_number</th>
+                            <th class="numeric">status</th>
                             <th>options</th>
                         </tr>
                         </thead>
@@ -77,14 +77,14 @@
                             ?>
                             <tr data-id="<?=$val['id']?>">
                                 <td><?=$val['id']?></td>
-                                <td><?=str_repeat('－', $val['depth'] - 1)?><?=$val['cat_name']?></td>
-                                <td class="numeric"><?=$tree_map[$val['pid']]?></td>
-                                <td class="numeric"><?=$val['depth']?></td>
+                                <td><?=$val['brand_name']?></td>
+                                <td class="numeric"><?=$val['status']?></td>
+                                <td class="numeric">0</td>
                                 <td>
-                                    <a href="/category/update?id=<?=$val['id']?>" class="btn btn-primary tooltips" data-toggle="tooltip" data-placement="top" data-original-title="编辑"><i class="fa fa-cog"></i></a>
+                                    <a href="/brand/update?id=<?=$val['id']?>" class="btn btn-primary tooltips" data-toggle="tooltip" data-placement="top" data-original-title="编辑"><i class="fa fa-cog"></i></a>
                                     <a class="btn btn-info tooltips" data-toggle="tooltip" data-placement="top" data-original-title="查看详情"><i class="fa fa-list"></i></a>
                                     <a class="btn btn-success tooltips" data-toggle="tooltip" data-placement="top" data-original-title="预览"><i class="fa fa-eye"></i></a>
-                                    <a class="btn btn-danger tooltips" data-toggle="tooltip" data-placement="top" data-original-title="删除" data-method="category"><i class="fa fa-trash-o"></i></a>
+                                    <a class="btn btn-danger tooltips" data-toggle="tooltip" data-placement="top" data-original-title="删除" data-method="brand"><i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                             <?php

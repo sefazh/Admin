@@ -48,7 +48,7 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Advanced Form validations
+                            Category / Upload
                         </header>
                         <div class="panel-body">
                             <div class="form">
@@ -56,7 +56,7 @@
                                     <div class="form-group ">
                                         <label for="cat_name" class="control-label col-lg-3 col-sm-3">cat_name</label>
                                         <div class="col-lg-4 col-sm-4">
-                                            <input class=" form-control" id="cat_name" name="cat_name" type="text" />
+                                            <input class=" form-control" id="cat_name" name="cat_name" type="text" value="<?=$row['cat_name']?>" />
                                         </div>
                                     </div>
 
@@ -68,7 +68,7 @@
                                                 <?php
                                                     foreach ($list as $key => $val) {
                                                         ?>
-                                                        <option value="<?=$val['id']?>"><?=str_repeat('－', $val['depth'])?><?=$val['cat_name']?></option>
+                                                        <option value="<?=$val['id']?>" <?php if ($val['id'] == $row['pid']) { echo "selected";} ?>><?=str_repeat('－', $val['depth'])?><?=$val['cat_name']?></option>
                                                         <?php
                                                     }
                                                 ?>
@@ -78,6 +78,7 @@
 
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-9">
+                                            <input type="hidden" name="id" value="<?=$row['id']?>">
                                             <button class="btn btn-primary" type="submit">Save</button>
                                             <button class="btn btn-default" type="button" onclick="window.history.back()">Cancel</button>
                                         </div>

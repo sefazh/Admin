@@ -44,10 +44,6 @@ class BackBase extends MY_Controller
      */
     public function getMenu()
     {
-
-
-        //dump($this->uri->rsegment(2));die;
-
         //$data = $this->privilege_model->getTree(0, 1, 2);
 
         $data = $this->privilege_model->oGetTree(0, 1, 2);
