@@ -53,6 +53,9 @@ class Ajax extends MY_Controller
                 case 'brand':
                     $this->brand_del();
                     break;
+                case 'type':
+                    $this->type_del();
+                    break;
                 case 'goods':
                     // no break
                 case 'privilege':
@@ -120,6 +123,48 @@ class Ajax extends MY_Controller
         else
         {
             $result = $this->brand_model->delete_one($id);
+        }
+
+        ajax_return($result);
+    }
+
+    /**
+     * 新建&编辑品牌 表单提交
+     */
+    public function type_edit()
+    {
+        $this->load->model('type_model');
+
+        $data = $this->input->post();
+
+        if (isset($data['id']) && $data['id'] > 0)
+        {
+            $result = $this->type_model->update_row($data);
+        }
+        else
+        {
+            $result = $this->type_model->create_row($data);
+        }
+
+        ajax_return($result);
+    }
+
+    /**
+     * 删除品牌
+     */
+    public function type_del()
+    {
+        $this->load->model('type_model');
+
+        $id = (int)$this->input->post('id');
+
+        if ($id <= 0)
+        {
+            $result = false;
+        }
+        else
+        {
+            $result = $this->type_model->delete_one($id);
         }
 
         ajax_return($result);

@@ -4,7 +4,7 @@
 
 var myTableJs = function () {
 
-    var method = ['category', 'brand', 'goods', 'privilege'];
+    var method = ['category', 'brand', 'type', 'goods', 'privilege'];
 
     $().ready(function() {
 
@@ -14,6 +14,7 @@ var myTableJs = function () {
 
                 var id = $(this).parent().parent().data('id');
                 var _method = $(this).data('method');
+
                 if (method.indexOf(_method) > -1) {
                     ajaxRemove($(this), { id: id, method: _method});
                 }

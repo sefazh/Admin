@@ -21,7 +21,7 @@ class MY_Model extends CI_Model
      */
     public function get_all()
     {
-        $query = $this->db->get($this->table);
+        $query = $this->db->order_by('`id` ASC')->get($this->table);
 
         return $query->result_array();
     }

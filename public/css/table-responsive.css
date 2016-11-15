@@ -41,6 +41,9 @@
     #flip-scroll th:last-child,
     #flip-scroll td:last-child { border-bottom: 1px solid #babcbf; }
 }
+@media only screen and (min-width: 801px) {
+    #flip-scroll th:last-child { width: 187px;}
+}
 
 /*no more table*/
 

@@ -74,6 +74,37 @@ var Script = function () {
                 });
             }
         });
+
+        // type
+        $("#typeCreateForm").validate({
+            rules: {
+                type_name: "required"
+            },
+            messages: {
+                type_name: "Please enter the type_name"
+            },
+            submitHandler : function(form) {
+                var formData = new FormData(form);
+                $.ajax({
+                    type: 'POST',
+                    url: '/ajax/type_edit',
+                    data: formData,
+                    dataType: 'json',
+                    processData : false,    // 使用formData必须false
+                    contentType : false,    // 使用formData必须false
+                    success: function(result) {
+                        if (result) {
+                            window.location.href = '/type/lst';
+                        } else {
+                            alert('操作失败！');
+                        }
+                    },
+                    error : function() {
+                        console.log('error');
+                    }
+                });
+            }
+        });
     });
 
 
